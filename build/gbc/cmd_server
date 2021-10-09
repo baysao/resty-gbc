@@ -12,7 +12,7 @@ source $ROOT_DIR/bin/shell_func.sh
 case "$1" in
     nginx)
 	shift
-	$ROOT_DIR/bin/openresty/nginx/sbin/nginx -c $ROOT_DIR/src/tmp/nginx.conf $@
+	$ROOT_DIR/bin/openresty/nginx/sbin/nginx -c $ROOT_DIR/tmp/nginx.conf $@
 	exit 0
 	;;
 esac
