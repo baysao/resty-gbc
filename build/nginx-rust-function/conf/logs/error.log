@@ -1,0 +1,12 @@
+2021/10/01 05:23:37 [emerg] 161#0: open() "conf/conf/nginx.conf" failed (2: No such file or directory)
+2021/10/01 05:23:55 [emerg] 167#0: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2021/10/01 05:23:55 [emerg] 167#0: bind() to 0.0.0.0:8888 failed (98: Address already in use)
+2021/10/01 05:23:55 [emerg] 167#0: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2021/10/01 05:23:55 [emerg] 167#0: bind() to 0.0.0.0:8888 failed (98: Address already in use)
+2021/10/01 05:23:55 [emerg] 167#0: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2021/10/01 05:23:55 [emerg] 167#0: bind() to 0.0.0.0:8888 failed (98: Address already in use)
+2021/10/01 05:23:59 [notice] 168#0: signal process started
+2021/10/01 08:12:09 [notice] 221#0: signal process started
+2021/10/01 08:12:09 [error] 221#0: open() "conf/logs/nginx.pid" failed (2: No such file or directory)
+2021/10/01 08:12:24 [notice] 225#0: signal process started
+2021/10/01 08:12:40 [notice] 271#0: signal process started
