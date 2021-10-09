@@ -9,7 +9,7 @@ _install_libs() {
 case "$1" in
     nginx)
 	shift
-	/massbit/massbitroute/app/src/bin/openresty/nginx/sbin/nginx -c /massbit/massbitroute/app/src/tmp/nginx.conf $@
+	$ROOT_DIR/bin/openresty/nginx/sbin/nginx -c $ROOT_DIR/src/tmp/nginx.conf $@
 	exit 0
 	;;
 esac
