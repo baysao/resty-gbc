@@ -21,67 +21,44 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 ]]
-
 local config = {
     DEBUG = cc.DEBUG_VERBOSE,
-
-    -- all sites
-    sites  = {
-       sample = {
-          server = {
-             nginx = {
-                port = 8088
-             }
-          },
-          apps = {
-             welcome = "_GBC_CORE_ROOT_/sites/sample/welcome",
-             tests   = "_GBC_CORE_ROOT_/sites/sample/tests",
-          }
-       }
-    },
- 
-
+    SITES_DIR = "_GBC_CORE_ROOT_/sites",
     -- default app config
     app = {
-        messageFormat              = "json",
+        appIndex = 1,
+        messageFormat = "json",
         defaultAcceptedRequestType = "http",
-        sessionExpiredTime         = 60 * 10, -- 10m
-
-        httpEnabled                = true,
-        httpMessageFormat          = "json",
-
-        websocketEnabled           = true,
-        websocketMessageFormat     = "json",
-        websocketsTimeout          = 60 * 1000, -- 60s
-        websocketsMaxPayloadLen    = 16 * 1024, -- 16KB
-
-        jobMessageFormat           = "json",
-        numOfJobWorkers            = 2,
-
-        jobWorkerRequests          = 1000,
+        sessionExpiredTime = 60 * 10, -- 10m
+        httpEnabled = true,
+        httpMessageFormat = "json",
+        websocketEnabled = true,
+        websocketMessageFormat = "json",
+        websocketsTimeout = 60 * 1000, -- 60s
+        websocketsMaxPayloadLen = 16 * 1024, -- 16KB
+        jobMessageFormat = "json",
+        numOfJobWorkers = 0,
+        jobWorkerRequests = 1000
     },
-
     -- server config
     server = {
         nginx = {
-            numOfWorkers = 4,
-            --port = 8088,
+            numOfWorkers = "auto",
+            port = 80
         },
-
         -- internal memory database
         redis = {
-            socket     = "unix:_GBC_CORE_ROOT_/tmp/redis.sock",
-            -- host       = "127.0.0.1",
-            -- port       = 6379,
-            timeout    = 10 * 1000, -- 10 seconds
+            socket = "unix:_GBC_CORE_ROOT_/tmp/redis.sock",
+            host = "127.0.0.1",
+            port = 0,
+            timeout = 10 * 1000 -- 10 seconds
         },
-
         -- background job server
         beanstalkd = {
             -- host         = "127.0.0.1",
             host = "unix:_GBC_CORE_ROOT_/tmp/beanstalkd.sock",
-            port         = 11300,
-        },
+            port = 11300
+        }
     }
 }
 

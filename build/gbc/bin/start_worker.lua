@@ -36,10 +36,26 @@ if #args < 2 then
     return help()
 end
 
-ROOT_DIR = args[1]
-APP_ROOT_PATH = args[2]
+local ROOT_DIR = args[1]
+local APP_ROOT_PATH = args[2]
+local LUA_PATH = args[3]
+local LUA_CPATH = args[4]
 
-package.path = ROOT_DIR .. '/src/?.lua;' .. package.path
+
+
+package.path = LUA_PATH.. ';' ..
+   ROOT_DIR .. '/gbc/src/?.lua;' ..
+   -- ROOT_DIR .. '/gbc/lib/?.lua;' ..
+   -- ROOT_DIR .. '/gbc/lib/share/lua/5.1/?.lua;' ..
+   ROOT_DIR .. '/bin/openresty/lualib/?.lua;' ..
+   package.path
+package.cpath = LUA_CPATH .. ';' ..
+   ROOT_DIR .. '/gbc/src/?.so;' ..
+   -- ROOT_DIR .. '/gbc/lib/?.so;' ..
+   -- ROOT_DIR .. '/gbc/lib/lib/lua/5.1/?.so;' ..
+   ROOT_DIR .. '/bin/openresty/lualib/?.so;' ..
+   package.cpath
+
 
 require("framework.init")
 local appKeys = dofile(ROOT_DIR .. "/tmp/app_keys.lua")
