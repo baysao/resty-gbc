@@ -1,0 +1,20 @@
+#!/bin/bash
+_install_libs() {
+	for p in luafilesystem lpeg lua-messagepack; do
+		/usr/local/openresty/luajit/bin/luarocks install $p
+	done
+
+}
+
+case "$1" in
+    nginx)
+	shift
+	/massbit/massbitroute/app/src/bin/openresty/nginx/sbin/nginx -c /massbit/massbitroute/app/src/tmp/nginx.conf $@
+	exit 0
+	;;
+esac
+declare -i DEBUG=0
+ROOT_DIR=$(cd "$(dirname $0)" && pwd)
+source $ROOT_DIR/bin/shell_func.sh
+updateConfigs
+$ROOT_DIR/bin/python_env/gbc/bin/supervisorctl -c $ROOT_DIR/tmp/supervisord.conf $@
